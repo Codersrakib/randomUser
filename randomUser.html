@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: url("https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-0.3.5&s=4222852e25e0f57d9485f7889957e99a&auto=format&fit=crop&w=2000&q=80");
+        background-size: cover;
+        background: #ccc;
+        background-position: 0 50%;
+        background: #deb493;
+    }
+    .background:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0);
+    }
+    .outer-div, .inner-div {
+        height: 450px;
+        max-width: 300px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .outer-div {
+        perspective: 900px;
+        perspective-origin: 50% calc(50% - 18em);
+    }
+    .inner-div {
+        margin: 0 auto;
+        border-radius: 5px;
+        font-weight: 400;
+        color: #071011;
+        font-size: 1rem;
+        text-align: center;
+        transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
+        transform-style: preserve-3d;
+        /*&:hover .front__face-photo, &:hover .front__footer {
+            opacity: 1;
+        }
+        */
+    }
+
+    .front {
+        cursor: pointer;
+        height: 100%;
+        background: #fff;
+        backface-visibility: hidden;
+        border-radius: 5px;
+        box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .front__bkg-photo {
+        position: relative;
+        height: 150px;
+        width: 300px;
+        background: url("https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80") no-repeat;
+        background-size: cover;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .front__bkg-photo:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .front__face-photo img{
+        position: relative;
+        top: -60px;
+        height: 120px;
+        width: 120px;
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        background-size: contain;
+        overflow: hidden;
+        /* backface-visibility: hidden;
+        transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
+        z-index: 3;
+        */
+    }
+    .front__text {
+        position: relative;
+        top: -55px;
+        margin: 0 auto;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        backface-visibility: hidden;
+
+    }
+    .front__text .front__text-header {
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        
+        text-transform: capitalize;
+        font-size: 20px;
+    }
+    .front__text .front__text-para {
+        position: relative;
+        top: -5px;
+        color: #000;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+    }
+    .front__text .front-icons {
+        position: relative;
+        top: 0;
+        font-size: 14px;
+        margin-right: 6px;
+        color: gray;
+    }
+    .front__text .front__text-hover {
+        position: relative;
+        top: 10px;
+        font-size: 10px;
+        color: tomato;
+        backface-visibility: hidden;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        border: 2px solid tomato;
+        padding: 8px 15px;
+        border-radius: 30px;
+        background: tomato;
+        color: #fff;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="outer-div">
+        <div class="inner-div">
+             <div class="front">
+                    <div class="front__bkg-photo"></div>
+                    <div class="front__face-photo"><img id="profile"  src="" alt="" srcset=""></div>
+                    <div class="front__text">
+                        <h3 class="front__text-header"></h3>
+                        <p class="front__text-para"><i class="fas fa-map-marker-alt front-icons"></i> <span id="locat"></span> </p>
+                        <span onclick="user()" class="front__text-hover">Find User</span>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let title = document.getElementsByClassName('front__text-header')[0];
+        let locat = document.getElementById('locat');
+        let profile = document.getElementById('profile');
+        function user(){
+            fetch('https://randomuser.me/api')
+            .then(response => response.json())
+            .then(data =>{
+                // set full name
+                let name = data.results[0].name;
+                let fullName = `${name.title} ${name.first} ${name.last}`
+                title.innerText = fullName;
+                // set location
+                let getLoc = data.results[0].location.state;
+                locat.innerText = getLoc;
+                // set profile picture..
+                let getPic = data.results[0].picture.large;
+                    profile.src = getPic;
+            })
+        }   
+        user();
+    //    email
+    //    location
+    </script>
+</body>
+</html>
